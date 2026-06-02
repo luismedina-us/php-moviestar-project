@@ -61,8 +61,18 @@
                 
                 $reviewsData = $stmt->fetchAll();
 
+                $userDAO = new UserDAO($this->conn, $this->url);
+
                 foreach($reviewsData as $review){
-                    $reviews[] = $this->buildReview($review);
+
+                    $reviewObject = $this->buildReview($review);
+
+                    //Call user data 
+                    $user = $userDAO->findById($reviewObject->users_id);
+
+                    $reviewObject->user = $user;
+
+                    $reviews[] = $reviewObject;
                 }
 
             } 

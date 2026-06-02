@@ -106,7 +106,7 @@
              <?php endif; ?>
              <!--- Reviews -->
                 <?php foreach($movieReviews as $review): ?>
-                    <?php require_once("templates/userreview.php"); ?>
+                    <?php require("templates/userreview.php"); ?>
                 <?php endforeach; ?>
                 <?php if(count($movieReviews) == 0): ?>
                     <p class="empty-list">No reviews yet...</p>
