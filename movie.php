@@ -1,8 +1,6 @@
 <?php 
     require_once("templates/header.php");
     require_once("globals.php");
-
-    //  Verify user already authenticated
     require_once("models/Movie.php");
     require_once("dao/movieDAO.php");
 
@@ -76,7 +74,7 @@
                 <p class="page-description">Fill out the form with rating and review</p>
                 <form action="<?= $BASE_URL ?>reviewprocess.php" id="review-form" method="post">
                     <input type="hidden" name="type" value="create">
-                    <input type="hidden" name="movies_id" id="<?= $movie->id ?>">
+                    <input type="hidden" name="movies_id" value="<?= $movie->id ?>">
                     <div class="form-group">
                         <label for="rating">Movie rating</label>
                         <select name="rating" id="rating" class="form-control">
