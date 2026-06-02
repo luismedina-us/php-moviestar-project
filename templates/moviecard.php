@@ -12,7 +12,13 @@
     <div class="card-body">
         <p class="card-rate">
             <i class="fas fa-star"></i>
-            <span class="rate">9</span>
+            <span class="rate">
+                <?php if(is_numeric($movie->rating)): ?>
+                <?= number_format($movie->rating, 1) ?>
+                <?php else: ?>
+                    <?= $movie->rating ?>
+                <?php endif; ?>
+            </span>
         </p>
         <h5 class="card-title">
             <a href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>"><?= $movie->title ?></a>

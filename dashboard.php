@@ -38,7 +38,16 @@
                 <tr>
                     <td scope="row"><?= $movie->id ?></td>
                     <td><a href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>" class="table-movie-title"><?= $movie->title ?></a></td>
-                    <td><i class="fas fa-star"></i>9</td>
+                    <td><i class="fas fa-star"></i>
+                        <?php if($movie->rating !== null): ?>
+                        <?php if(is_numeric($movie->rating)): ?>
+                            <i class="fas fa-star"></i>
+                            <?= number_format($movie->rating, 1) ?>
+                        <?php else: ?>
+                            <?= $movie->rating ?>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    </td>
                     <td class="actions-column">
                         <a href="<?= $BASE_URL ?>editmovie.php?id=<?= $movie->id ?>" class="edit-btn">
                             <i class="far fa-edit"></i> Edit

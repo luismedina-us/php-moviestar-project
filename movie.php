@@ -44,12 +44,13 @@
             $userOwnsMovie = true;
         }
 
+        $alreadyReviewed = $reviewDAO->hasAlreadyReviewed($movie->id, $userData->id);
+
     }
 
     // Rescue movie reviews
     $movieReviews = $reviewDAO->getMoviesReview($id);
     
-    $alreadyReviewed = false;
 
 ?>
 
@@ -62,7 +63,16 @@
                 <span class="pipe"></span>
                 <span><?= $movie->category ?></span>
                 <span class="pipe"></span>
-                <span><i class="fas fa-star"></i>9</span>
+                <span>
+                    <?php if($movie->rating !== null): ?>
+                        <?php if(is_numeric($movie->rating)): ?>
+                            <i class="fas fa-star"></i>
+                            <?= number_format($movie->rating, 1) ?>
+                        <?php else: ?>
+                            <?= $movie->rating ?>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </span>
             </p>
             <iframe src="<?= $movie->trailer ?>" width="560" height="315" frameboarder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <p><?= $movie->description ?></p>
