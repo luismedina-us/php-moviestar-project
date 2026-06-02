@@ -357,7 +357,13 @@
 
 .author-name a {
     color: #F5C518;
+    text-decoration: none;
 }
+
+.author-name a:hover {
+    text-decoration: underline;
+}
+
 
 .comment-title {
     color: #999;
@@ -449,6 +455,22 @@
     background-color: transparent;
     color: #DC3545;
     text-decoration: none;
+}
+
+/* Search */
+#search-title {
+    font-size: 40px;
+}
+
+#search-result, 
+.back-link {
+    color: #F5C518;
+    text-decoration: none;
+}
+
+#search-result:hover, 
+.back-link:hover {
+    text-decoration: underline;
 }
 
 /* FOOTER */
